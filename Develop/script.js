@@ -1,4 +1,4 @@
-//final steps. Randomly generate answer variables, make generate button begin function, have answer array or password appear in application
+//final steps.  generate a password equal to the length chosen from my variable list.
 
 var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
@@ -16,18 +16,25 @@ function criteria_prompt() {
 
   var characters = window.prompt("Would you like to include lowercase, uppercase, or both characters.")
     characters = characters.toLocaleLowerCase()
+
     if ((characters === "lowercase") || (characters === "uppercase") || (characters === "both")) {
       window.alert("Are you sure you want " + characters + "?")
       console.log(characters)
     }else {
       criteria_prompt()
     }
-    if (characters === "lowercase")
-        answer.push(lowercase = Math.floor(Math.random() * 20) + 1)
-    if (characters === "uppercase")
-      answer.push(uppercase[0])
-    if (characters === "both")
-      answer.push(lowercase[0], uppercase[0])
+    if (characters === "lowercase") {
+      var random_index = Math.floor(Math.random() * 25)
+        answer.push(lowercase[random_index])
+    }
+    if (characters === "uppercase") {
+      var random_index = Math.floor(Math.random() * 25)
+      answer.push(uppercase[random_index])
+    }
+    if (characters === "both") {
+      var random_index = Math.floor(Math.random() * 25)
+      answer.push(lowercase[random_index], uppercase[random_index])
+    }
       console.log(answer)
   }
 criteria_prompt();
@@ -36,6 +43,7 @@ criteria_prompt();
 function numeric_prompt() {
 
   var number = window.prompt("Would you like numeric characters?")
+    number = number.toLocaleLowerCase()
 
     if ((number === "yes") || (number === "no")){
       window.alert("Are you sure you meant " + number + "?")
@@ -43,15 +51,18 @@ function numeric_prompt() {
     }else {
       numeric_prompt()
     }
-    if (number === "yes")
-    answer.push(numeric = Math.floor(Math.random() * 20) + 1)
+    if (number === "yes") {
+      var random_number = Math.floor(Math.random() * 10)
+      answer.push(numeric[random_number])
+    }
     console.log(answer)
 }
 numeric_prompt();
 
 function special_characters() { 
 
-  var special = window.prompt("Would you like to use special characters?") 
+  var special = window.prompt("Would you like to use special characters?")
+    special = special.toLocaleLowerCase() 
 
   if ((special === "yes") || (special === "no")){
     window.alert("Are you sure you meant " + special + "?")
@@ -59,10 +70,11 @@ function special_characters() {
     }else {
     special_characters()
   }
-  if (special === "yes")
-  answer.push(special = Math.floor(Math.random() * 20) + 1)
+  if (special === "yes") {
+    var random_special = Math.floor(Math.random() * 8)
+    answer.push(symbol[random_special])
+  }
   console.log(answer)
-
 }
 special_characters();
 
@@ -82,4 +94,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePasswordanswer);
