@@ -9,16 +9,17 @@ var answer = []
 
 
 
-//var password = generatePassword();
-
-//var passwordText = document.querySelector("#password");
-
-//passwordText.value = password;
-
-
 
 
 function writePassword() {
+var password = generatePassword();
+var passwordText = document.querySelector("#password");
+passwordText.value = password;
+}
+writePassword();
+
+
+function generatePassword() {
 
   var length = window.prompt("Between 8 - 128, how long would you like your password?")
   console.log(length)
@@ -86,14 +87,15 @@ function writePassword() {
       answer.push(symbol[random_special])
     }
     console.log(answer)
+    
   }
   special_characters();
 }
-writePassword();
+generatePassword();
 
 // Get references to the #generate element
 
 var generateBtn = document.querySelector("#generate");
 console.log(generateBtn)
 
-generateBtn.addEventListener("click", writePassword); 
+generateBtn.addEventListener("click", generatePassword); 
